@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './Title';
+import PostMetaInfo from './PostMetaInfo';
 
 export default function PostsList({ posts }) {
   if (posts.length === 0) {
@@ -11,7 +13,13 @@ export default function PostsList({ posts }) {
       {posts.map((post) => {
         return (
           <li key={post.id} className="post">
-            {post.title}
+            <Title url={post.url} title={post.title} id={post.id} />
+            <PostMetaInfo
+              by={post.by}
+              time={post.time}
+              id={post.id}
+              descendants={post.descendants}
+            />
           </li>
         );
       })}
